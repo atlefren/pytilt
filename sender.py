@@ -18,7 +18,7 @@ def send(data, url, key):
 
 class Sender(object):
 
-    def __init__(self, batch_size=10):
+    def __init__(self, batch_size=1):
         self.queue = []
         self.sending = []
         self.batch_size = batch_size

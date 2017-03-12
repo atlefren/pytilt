@@ -1,5 +1,6 @@
 import sys
 import datetime
+import time
 
 import bluetooth._bluetooth as bluez
 
@@ -19,6 +20,16 @@ TILTS = {
 }
 
 
+def distinct(objects):
+    seen = set()
+    unique = []
+    for obj in objects:
+        if obj['uuid'] not in seen:
+            unique.append(obj)
+            seen.add(obj['uuid'])
+    return unique
+
+
 def to_celsius(fahrenheit):
     return round((fahrenheit - 32.0) / 1.8, 2)
 
@@ -26,7 +37,7 @@ def to_celsius(fahrenheit):
 def monitor_tilt():
     sender = Sender()
     while True:
-        beacons = blescan.parse_events(sock, 10)
+        beacons = distinct(blescan.parse_events(sock, 10))
         for beacon in beacons:
             if beacon['uuid'] in TILTS.keys():
                 sender.add_data({
@@ -35,6 +46,7 @@ def monitor_tilt():
                     'temp': to_celsius(beacon['major']),
                     'gravity': beacon['minor']
                 })
+        time.sleep(10)
 
 
 if __name__ == '__main__':
