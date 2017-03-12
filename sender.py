@@ -43,4 +43,6 @@ class Sender(object):
             self.sending = []
         else:
             print 'send failed'
+            if len(self.queue) > 100:
+                self.queue = []
             self.queue += self.sending
