@@ -11,7 +11,7 @@ Installation
 
 Running
 -----------
-0. From the directory containing pytilt.py run `sudo python pytilt.py`
+0. From the directory containing pytilt.py run `python pytilt.py`
 
 Running Pytilt in the background and on System Start
 -----------
