@@ -6,7 +6,7 @@ Tool for reading your Tilt brewing hydrometer[1] in python on a rasberry pi and 
 Installation
 ------------
 0. git clone https://github.com/atlefren/pytilt.git
-1. Install pyhton-bluez: ```sudo apt-get install python-bluez```
+1. Install python-bluez: ```sudo apt-get install python-bluez```
 2. Make the bluetooth interface accessible witout being root: ```sudo setcap cap_net_raw+eip /usr/bin/python2.7```
 
 Running
